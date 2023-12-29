@@ -27,3 +27,19 @@ let flag3Changed = String(null)     // => Boolean = false ; Number = 0 ; String 
 console.log(flag3Changed, typeof(flag3Changed));
 
 // remember here we are changing types from one to another sometimes we get the value NaN mean the conversion of datatype is done but the value cannot be converted
+
+
+// in the ecma documentation i found that in case of different operators javascript have different behaviour due to type coercion
+/*
+
++ => if both or one of the operand is string perform concatenation else addition
+-,*,/ => if both or one is string it is converted js tries to convert them into numbers and perform operation
+<,=,<=,>= =>if one or both operand is string performs lexicorgraphic(dictionary) comparision
+==,=== => '==' is used for check for value and '===' check for value and datatype
+&& => performs short circuit operation, if first operand is falsy, it is returned else return the second one
+|| => performs short circuit operation, if first operand is truthy, it is returned else second one is returned
+! => '!' is not it reverse the value of the variable before it is used
+falsy values (foenun)=>  false, 0, empty-string "", NaN, null, undefined
+truthy values => all the values other than falsy are truthy values
+
+*/
