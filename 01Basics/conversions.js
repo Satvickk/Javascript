@@ -24,7 +24,7 @@ let flag2Changed = Boolean(flag2)
 let flag3 = null
 let flag3Changed = String(null)     // => Boolean = false ; Number = 0 ; String = null
 
-console.log(flag3Changed, typeof(flag3Changed));
+// console.log(flag3Changed, typeof(flag3Changed));
 
 // remember here we are changing types from one to another sometimes we get the value NaN mean the conversion of datatype is done but the value cannot be converted
 
@@ -43,3 +43,9 @@ falsy values (foenun)=>  false, 0, empty-string "", NaN, null, undefined
 truthy values => all the values other than falsy are truthy values
 
 */
+
+console.log(null > 0);   // => false
+console.log(null == 0);  // => false
+console.log(null >= 0);  // => true  - because in this comparision converts null into number i.e 0 
+
+// remember comparision <,>,=<,>= and equality == and === works differently in js
