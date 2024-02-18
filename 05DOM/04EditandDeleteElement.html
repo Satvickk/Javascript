@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit and Delete element</title>
+</head>
+<body style="background-color: #333; color: white;">
+    <ul class="language" id="language">
+    </ul>
+</body>
+<script>
+
+    const myArr = [ "blue", "green", "yellow", "red", "orange", "pink"]
+
+
+    
+    function create(name, number, myArr) {
+        const li = document.createElement("li");
+        li.setAttribute('class', 'list-element');
+        li.innerText = name;
+        li.style.backgroundColor = myArr[number];
+        li.style.color = "white";
+        li.style.padding = "10px";
+        li.style.margin = "8px";
+        
+        
+        document.getElementById('language').appendChild(li);
+    }
+    
+    create("javascript", 4, myArr)
+    create('Ruby', 3, myArr)
+    create('python',1, myArr)
+    create('typescript', 0, myArr)
+    
+    // this type of  function is good for basic approach but it is not optimised because the in innerText the function has to traversed the whole dom tree which can be an issue if the li are in high number
+
+
+    // the optimised way - here the element will directly be appended at the end of the element i.e at the node
+
+    function optimisedCreate(name, number, myArr, color) {
+        const li = document.createElement("li")
+        li.appendChild(document.createTextNode(name));
+        li.style.backgroundColor = myArr[number];
+        li.style.color = `${color}`;
+        li.style.padding = "10px";
+        li.style.margin = "8px";
+
+        document.querySelector(".language").appendChild(li);
+    }
+
+    optimisedCreate("C++", 5, myArr, "black")
+
+
+    // Delete
+
+    const delElement = document.querySelector("li:nth-child(2)")
+    delElement.remove()
+
+
+    // Edit 
+
+    const editElement = document.querySelector("li:nth-child(4)")
+
+    // first way
+    // editElement.innerHTML = "wwe"
+
+    //second way
+    const newli = document.createElement("li")
+    newli.innerText = "cff"
+    // editElement.replaceWith(newli)
+
+    //third way
+    editElement.outerHTML = '<li>dead</li>'
+
+
+</script>
+
+
+</html>

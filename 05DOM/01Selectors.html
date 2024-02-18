@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My first website</title>
+</head>
+<body>
+    <div class="bg-black" id="bg">
+        <h1 class="text-white">Lorem ipsum dolor sit amet.</h1>
+        <p id="content" >Lorem ipsum dolor sit amet, consectetur adipisicing.
+            <span style="display: hidden;">Lorem, ipsum dolor.</span>
+        </p>
+        <input type="password" placeholder="password" />
+        <input type="text" placeholder="name" />
+    </div>
+
+    <div>
+        <ul>
+            <li class="list">one</li>
+            <li class="list">two</li>
+            <li class="list">three</li>
+        </ul>
+    </div>
+</body>
+<script>
+
+ /*   const result = document.getElementById('bg')
+    // console.log(result);
+
+    // or
+
+
+    const value = document.getElementsByClassName('bg-black')
+    // console.log(value[0]);
+
+// remember HTMLCollection, Array and NodeCollection may look the same but are different from each other as htmlCollection does not contains the properties of array like map or forEach
+
+
+// document.getElementById('bg').id
+// 'bg'
+
+// document.getElementById('bg').class
+// undefined
+
+// document.getElementById('bg').className
+// 'bg-black'
+
+// document.getElementById('bg').getAttribute()
+
+// document.getElementById('bg').getAttribute('class')
+// 'bg-black'
+
+// document.getElementById('bg').getAttribute('bg')
+// null
+
+// document.getElementById('bg').getAttribute('id')
+// 'bg'
+
+// document.getElementById('bg').setAttribute('id', 'heading')
+// undefined
+
+// document.getElementById('bg').setAttribute('id', 'heading bg')
+
+// document.getElementById('bg').setAttribute('class', 'heading bg-black')
+
+// document.getElementById('bg').setAttribute('id', 'bg')
+
+// document.getElementById('bg')
+
+
+
+
+// we can change the css of the elements
+
+result.style.backgroundColor = "orange"
+result.style.color = "white"
+
+
+
+// on browse's console
+
+// const vlbab = document.getElementById('bg')
+// undefined
+// vlbab.style.backgroundColor = "orange"
+// 'orange'
+// vlbab.style.color = "#666"
+// '#666'
+// vlbab.style.color = "#333"
+// '#333'
+// document.body.style.backgroundColor = "#333"
+// '#333'
+// vlbab.style.color = "#fffff"
+// '#fffff'
+// vlbab.style.color = "white"
+// 'white'
+// vlbab.style.color = "#999"
+// '#999'
+// vlbab.style.color = "#dadada"
+// '#dadada'
+// vlbab.lastElementChild.style.backgroundColor = "#666"
+// '#666'
+
+
+
+// innerHTML, innerText, textContent
+
+
+// - innerHTML will give the inner html of the target element i.e tags, attribute everything
+
+// document.getElementById('content').innerHTML
+// 'Lorem ipsum dolor sit amet, consectetur adipisicing.\n <span style="display: hidden;">Lorem, ipsum dolor.</span>\n 
+
+*/
+
+// - innerText will give the inner text of the target element that is written on the code without any css manipulation
+
+// document.getElementById('content').innerText
+// 'Lorem ipsum dolor sit amet, consectetur adipisicing. Lorem, ipsum dolor.'
+
+
+
+
+// - textContent will give the inner text of the target element which will be displayed on the web page
+
+// document.getElementById('content').textContent
+// 'Lorem ipsum dolor sit amet, consectetur adipisicing.\n            Lorem, ipsum dolor.\n  
+
+
+// type of selectors
+/* 
+
+document.getElementById("")                    // select an html element
+
+document.getElementByClassName("")              // select a Html collection
+
+document.querrySelector(".bg-black")             // select the first element containing class bg-black
+document.querrySelector("#content")             // select the first element containing id content
+
+document.querrySelector(".bg-black")             // select the first element containing class bg-black
+
+document.querrySelector("input[type = "password"]")             // select the input element whose type is password
+
+document.querySelector('div:first-child')            // select the first child of first div
+
+document.querySelectorAll('.bg')                // select all the element with class bg
+
+document.querySelectorAll('li')                 // return a NodeList back [li.List, li.List, li.List]
+
+
+
+document.querySelectorAll('.list')
+output - :   NodeList(3) [li.list, li.list, li.list]
+
+document.querySelectorAll('.list').style.color = "white"    // this will give error because it is a nodeList so we have to access the individual item as we do in array
+
+output - :   VM20994:1 Uncaught TypeError: Cannot set properties of undefined (setting 'color')
+             at <anonymous>:1:48
+             (anonymous) @ VM20994:1
+
+
+
+document.querySelectorAll('.list')[0].style.color = "red"
+
+
+
+//
+
+In browser use of getElementByClassName and then converting the returned HTMLcollection into an array and the using map to set the background color of each element with class list
+
+
+const temp = document.getElementsByClassName("list")
+undefined
+temp
+HTMLCollection(3) [li.list, li.list, li.list]
+Array.from(temp).map((item, index) => item.style.backgroundColor = "#999")
+(3) ['#999', '#999', '#999']
+Array.from(temp).map((item, index) => item.style.backgroundColor = "#dadada")
+
+
+
+*/
+
+</script>
+</html>

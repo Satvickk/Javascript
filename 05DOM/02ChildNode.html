@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Nodes</title>
+</head>
+<body style="background-color: #333; color: white; padding: 20px;">
+    <div id="parent">
+        <p class="day">Mon</p>
+        <p class="day">Tue</p>
+        <p class="day">Wed</p>
+        <p class="day">Thr</p>
+        <p class="day">Fri</p>
+        <p class="day">Sat</p>
+    </div>
+</body>
+
+<script>
+
+const parent = document.querySelector('#parent')
+
+// console.log(parent);
+// console.log(parent.children);                        // returns an HTMLcollection
+
+for (let index = 0; index < parent.children.length; index++) {
+    parent.children[index].style.backgroundColor ="black"
+    parent.children[index].style.padding ="15px"
+}
+
+const day = document.querySelector(".day")
+
+// console.log(day.innerHTML);
+
+// console.log(parent.firstElementChild.innerHTML);
+
+// console.log(parent.lastElementChild.innerHTML);
+
+// console.log(day.nextElementSibling.innerHTML);
+
+// console.log(day.nextElementSibling.nextElementSibling.innerHTML);
+
+// console.log(day.parentElement);
+
+console.log(parent.childNodes);                              // returns a nodelist with 13 element but we have only 6 elements , it is because js counts a linebreak or an enter as a node also thus if we add one comment at the top to parent the that will gice us 2 nodes first is the comment node and the second one will be the line break node.
+
+// NodeList(13) [text, p.day, text, p.day, text, p.day, text, p.day, text, p.day, text, p.day, text]
+
+
+// thus the first break after the div is count as first node and the rest 6 days + 6 line Break = 13 nodes
+
+
+
+</script>
+
+</html>
