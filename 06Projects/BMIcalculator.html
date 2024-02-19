@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+<body>
+    <script>
+
+document.body.style.backgroundColor = "#333"
+document.body.style.color = "white"
+document.body.style.display = "flex"
+document.body.style.justifyContent = "center"
+document.body.style.alignItems = "center"
+document.body.style.height = "100vh"
+document.body.style.width = "100%"
+
+const div = document.createElement("div")
+div.style.background = "#666"
+
+document.body.appendChild(div)
+div.style.display = "flex"
+div.style.justifyContent = "center"
+div.style.alignItems = "center"
+div.style.flexDirection = "column"
+
+
+
+// input box
+
+const height = document.createElement('input')
+const weight = document.createElement('input')
+
+div.appendChild(height)
+div.appendChild(weight)
+
+height.setAttribute('class', 'input')
+height.setAttribute('id', 'height')
+height.setAttribute('placeholder', 'Enter Height (in meters)')
+
+weight.setAttribute('class', 'input')
+height.setAttribute('id', 'weight')
+weight.setAttribute('placeholder', 'Enter Weight (in kgs)')
+
+
+const inputClass = document.getElementsByClassName("input")
+
+for (let index = 0; index < inputClass.length; index++) {
+    inputClass[index].style.margin = "8px"
+    inputClass[index].style.fontSize = "20px" 
+    inputClass[index].style.padding = "5px" 
+}
+
+
+//button
+
+const btn = document.createElement("button")
+div.appendChild(btn)
+btn.style.margin = "8px"
+btn.style.fontSize = "20px" 
+btn.style.padding = "5px"
+btn.style.borderRadius = "10px"
+btn.innerText = 'Calculate'
+
+const show = document.createElement('p')
+div.appendChild(show);
+show.innerText = "Your BMI result will appear here";
+show.style.fontSize = "25px"
+show.style.backgroundColor = "#999"
+show.style.borderRadius = "3px"
+show.style.padding = "5px"
+
+btn.addEventListener('click', (e)=> {
+    e.preventDefault();
+
+    const val1 = height.value
+    const val2 = weight.value
+
+
+    show.style.fontSize = '10px';
+
+    if( val1 && val2){
+        const bmi = val2 / (val1 ** 2)
+        if(bmi <= 18.5) {
+            show.innerText = `You are underweight, your BMI is ${bmi}`
+        }
+        else if(bmi >= 18.5 && bmi <= 24.9){
+            show.innerText = `You have Normal weight, your BMI is ${bmi}`
+        }
+        else if(bmi >= 25 && bmi <= 29.9){
+            show.innerText = `You are Overweight, your BMI is ${bmi}`
+        }else{
+            show.innerText = `You are Obese, your BMI is ${bmi}`
+        }
+    }
+    else{
+        alert("please enter all fields")
+    }
+
+    height.value = null
+    weight.value = null
+})
+
+    </script>
+</body>
+</html>
