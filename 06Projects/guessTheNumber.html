@@ -72,7 +72,7 @@
     restartBtn.style.display = "none";
     restartBtn.addEventListener('click', function restart() {
         chances = 10;
-        guessArray.length = 0; 
+        guessArray = []; 
         randomNumber = Math.round((Math.random() * 100) + 1);
         text.innerText = "Guess the number Between 1 - 100";
         hint.innerText = "Hint:";
