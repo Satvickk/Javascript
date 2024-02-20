@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+</head>
+<body>
+    <script> 
+
+    let chances = 10;
+    const guessArray = [];
+    let randomNumber = Math.round((Math.random() * 100) + 1);
+
+    // body
+    document.body.style.backgroundColor = "#333";
+    document.body.style.color = "white";
+    document.body.style.display = "flex";
+    document.body.style.justifyContent = "center";
+    document.body.style.alignItems = "center";
+    document.body.style.height = "100vh";
+    document.body.style.width = "100%";
+    document.body.style.margin = "0px";
+    document.body.style.padding = "0px";
+
+    // container
+    const container = document.createElement("div");
+    document.body.appendChild(container);
+    container.style.height = "70%";
+    container.style.width = "40%";
+    container.style.backgroundColor = "#666";
+    container.style.display = "flex";
+    container.style.flexDirection = "column";
+    container.style.justifyContent = "space-around";
+    container.style.alignItems = "center";
+    container.style.padding = "5px";
+
+    // heading
+    const text = document.createElement("p");
+    text.innerText = "Guess the number Between 1 - 100";
+    container.style.textAlign = "center";
+    text.style.fontSize = "30px";
+    text.style.width = "100%";
+    container.appendChild(text);
+
+    // input
+    const input = document.createElement("input");
+    container.appendChild(input);
+    input.style.padding = "5px";
+    input.style.fontSize = "15px";
+    input.style.borderRadius = "5px";
+    input.setAttribute("id", "inputNumber");
+    input.setAttribute("placeholder", "enter your Guess");
+
+    // button
+    const btn = document.createElement("button");
+    container.appendChild(btn);
+    btn.innerText = "Check";
+    btn.style.padding = "5px";
+    btn.style.fontSize = "15px";
+    btn.style.borderRadius = "5px";
+    btn.setAttribute("id", "btn");
+
+    // restartBtn
+    const restartBtn = document.createElement("button");
+    container.appendChild(restartBtn);
+    restartBtn.innerText = "Start again";
+    restartBtn.style.padding = "5px";
+    restartBtn.style.fontSize = "15px";
+    restartBtn.style.borderRadius = "5px";
+    restartBtn.setAttribute("id", "btn");
+    restartBtn.style.display = "none";
+    restartBtn.addEventListener('click', function restart() {
+        chances = 10;
+        guessArray.length = 0; 
+        randomNumber = Math.round((Math.random() * 100) + 1);
+        text.innerText = "Guess the number Between 1 - 100";
+        hint.innerText = "Hint:";
+        restartBtn.style.display = "none";
+    });
+
+    // hint
+    const hint = document.createElement("p");
+    hint.innerText = `Hint:`;
+    hint.style.textAlign = "center";
+    hint.style.backgroundColor = "#333";
+    hint.style.padding = "5px";
+    hint.style.fontSize = "10px";
+    hint.style.width = "100%";
+    container.appendChild(hint);
+
+    // chances
+    const count = document.createElement("p");
+    count.innerText = `Chances left: ${chances}`;
+    container.style.textAlign = "center";
+    count.style.backgroundColor = "#333";
+    count.style.padding = "5px";
+    count.style.fontSize = "20px";
+    count.style.width = "100%";
+    container.appendChild(count);
+
+    // Your guess
+    const guess = document.createElement("p");
+    guess.innerText = `Your Guess: ${guessArray.map((item) => item)}`;
+    guess.style.textAlign = "center";
+    guess.style.backgroundColor = "#333";
+    guess.style.padding = "5px";
+    guess.style.fontSize = "20px";
+    guess.style.width = "100%";
+    container.appendChild(guess);
+
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(chances > 0 && chances < 11){
+            let value = parseInt(input.value);
+            guessArray.push(value);
+            guess.innerText = `Your Guess: ${guessArray.map((item) => item)}`;
+            chances--;
+            count.innerText = `Chances left: ${chances}`;
+            input.value = null;
+
+            if(value === randomNumber){
+                text.innerText = `Correct you've guessed the correct number The number was ${randomNumber} Press start to play again`;
+                input.value = 0;
+                chances = 0;
+                count.innerText = `Chances left: ${chances}`;
+                restartBtn.style.display = "block";
+                hint.innerText = ""
+            }
+            else if(value < randomNumber){
+                hint.innerText = `Hint: number is greater than your guess`;
+            }
+            else if(value > randomNumber){
+                hint.innerText = `Hint: number is lesser than your guess`;
+            }
+        }
+        else{
+            text.innerText = `Game Over! The number was ${randomNumber} Press start to play again`;
+            input.value = null;
+            restartBtn.style.display = "block";
+        }
+    });
+
+    </script>
+</body>
+</html>
