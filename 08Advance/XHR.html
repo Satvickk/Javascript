@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHR request </title>
+</head>
+<body style="background-color: #333; color: white;">
+    
+</body>
+<script>
+
+    document.body.style.display = "flex"
+    document.body.style.height = "100vh"
+    document.body.style.margin = "0px"
+    document.body.style.padding = "0px"
+    document.body.style.width = "100%"
+    document.body.style.justifyContent = "center"
+    document.body.style.alignItems = "center"
+
+    const div = document.createElement('div')
+    div.style.height = "200px"
+    div.style.padding = "10px"
+    div.style.width = "100px"
+    div.style.borderRadius = "5px"
+    div.style.backgroundColor = "#666"
+    
+    document.body.appendChild(div)
+
+    const img = document.createElement("img")
+    div.appendChild(img)
+    img.style.height = "100px"
+    img.style.width = "100px"
+
+
+    const text = document.createElement("p")
+    div.appendChild(text)
+
+    const URL = 'https://api.github.com/users/Satvickk'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', URL);
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText)
+            // console.log(typeof data);
+            // console.log(data.followers);
+            text.innerText = `followers:${data.followers}`
+            // console.log(data.avatar_url);
+            img.setAttribute("src", `${data.avatar_url}`)
+        }
+    }
+    xhr.send();
+</script>
+</html>
