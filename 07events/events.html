@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" onclick="alert('hello you have clicked on prayer')" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+
+<!--type-1: we can add event listner in inline the tag but it is not efficient in html as it can give inconsistance performance but in reactjs it is modified thus it works better there -->
+
+        </ul>
+   </div>
+</body>
+<script>
+
+// type-2: we can add event listner using dot notation but the problem here is that it will not provide us with the ability to handle event propogation and other functionality also
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // }
+
+     // attachEvent()
+    // jQuery - on
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+
+// type-3 : (best approach) this is the best approach,by using addEventListner we have the ability to handle the propagation of events
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+
+// Event Propagation - it is simple the travelling of event from one to another (from smaller element to bigger)
+
+// 1. Event bubbling(default) - false - the event will travel from child to parent 
+
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log("clicked inside the ul");
+    }, false)
+
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log("clicked inside the owl");
+    }, false)
+
+    // the output will be :     clicked inside the owl
+    //                          clicked inside the ul
+
+
+// 1. Event capturing - true - the event will travel from parent to child (from bigger element to smaller)
+
+document.getElementById('images').addEventListener('click', function(e){
+        console.log("clicked inside the ul");
+    }, true)
+
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log("clicked inside the owl");
+    }, true)
+
+    // the output will be :     clicked inside the ul
+    //                          clicked inside the owl
+
+
+
+// we can stop the event from propagation but using stoppropagation() method found in the pointer event
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation()
+    // }, false)
+    
+
+//  preventDefault() will stop the element/tags default behaviour, for example: if applied on <a> the tag will not navigate
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();
+    //     e.stopPropagation()
+    //     console.log("google clicked");
+    // }, false)
+   
+    
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName);
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+    
+        
+    })
+    
+    //removeIt.parentNode.removeChild(removeIt)
+</script>
+</html>
