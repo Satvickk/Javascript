@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Project</title>
+</head>
+<body style="background-color: #333; color: white
+;">
+    <!-- click anywhere on the div to create a circle -->
+</body>
+<script>
+    document.body.style.margin = "0px"
+    document.body.style.padding = "0px"
+    document.body.style.height = "100vh"
+    document.body.style.width = "100%"
+    document.body.style.position = "relative"
+    document.body.style.overflow = "hidden"
+
+
+function createDiv(x,y) {
+    const div = document.createElement('div')
+    div.style.height = "50px"
+    div.style.width = "50px"
+    div.style.backgroundColor = "green"
+    div.style.borderRadius = "100%"
+    div.style.position = "absolute"
+    div.style.top = `${y-25}px`
+    div.style.left = `${x-25}px`
+    document.body.appendChild(div)
+}
+
+document.body.addEventListener('click', (e)=> {
+    createDiv(e.x,e.y)
+})
+
+</script>
+</html>
