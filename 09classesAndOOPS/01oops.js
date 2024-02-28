@@ -1,5 +1,6 @@
 // Object Literal : it literally mean an object - {}
 
+// remember for now this keyword refers to current context
 const user = {
     username : "Satvick",
     age: 21,
@@ -38,7 +39,7 @@ function employee(username, password, salary) {
         console.log(this.salary * 10);
     }
 
-    // return this       // we can return implicitely if we use constructor we do not require returning any values
+    // return this       // we can return implicitely if we use constructor function we do not require returning any values
 }
 
 // const empOne = employee("satvick", "123", 2000)
@@ -47,7 +48,7 @@ function employee(username, password, salary) {
 // console.log(empOne);
 // console.log(empTwo);
 
-//as we call he function for the empTwo the values of the empOne is changed because the context is same. thus to create a seperate function values from the function without changining previous values we use new keyword 
+//as we call he function for the empTwo the values of the empOne is changed because the context is same. thus to create a seperate function copy (instance) values from the function without changining previous values we use new keyword which will invoke contructor function which further will return a copy ofthe original function object
 
 
 
@@ -57,6 +58,14 @@ const empTwo = new employee("hitesh", "321", 4000)
 // console.log(empOne);
 // console.log(empTwo);
 
-// console.log(empOne.constructor)               // can also be written as empOne.prototype.constructor                  
+console.log(empOne.constructor)               // can also be written as empOne.prototype.constructor                  
 
-//IMP - a constructor on an object always holds the reference to the original object ! , in this case it holds the reference of a function employee i.e [Function: employee]
+//IMP - a constructor function of an object always holds the reference to the original object ! , in this case it holds the reference of a function employee i.e [Function: employee]
+
+// on using constructor method
+// step 1 : an empty object/context will be created
+// Step 2 : all the properties and methods will be inserted
+// Step 3 : the value of the this context will be assigned to this
+
+
+// instanceOf is used to check weather the object is instance of the object or not
