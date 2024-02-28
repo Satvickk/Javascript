@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout</title>
+</head>
+
+<body style="background-color: #333; color: white;">
+    <h1 id="text" class="text">This is JavaScript</h1>
+    <button id="Start">Start</button>
+    <button id="Stop">Stop</button>
+</body>
+<script>
+    const text = document.querySelector("#text")
+    const Start = document.querySelector("#Start")
+    const Stop = document.querySelector("#Stop")
+    
+
+    Start.addEventListener('click', () => {
+        const result = setTimeout(() => {
+            text.innerHTML = "This is Python"
+        }, 2000);
+
+        Stop.addEventListener('click', ()=>{
+            clearTimeout(result)
+        })
+    })
+
+
+
+</script>
+
+</html>

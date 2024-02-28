@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Interval</title>
+</head>
+
+<body style="background-color: #333; color: white; transition: all 1s ease-in;">
+    <button class="btn" id="Start">Start</button>
+    <button class="btn" id="Stop">Stop</button>
+</body>
+<script>
+    document.body.style.height = "100vh"
+    document.body.style.width = "100%"
+    document.body.style.margin = "0px"
+    document.body.style.padding = "0px"
+
+    const myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 'A', 'B', 'C', 'D', 'E', 'F']
+
+    let color = "#"
+
+    function generateColor() {
+        for (let index = 0; index < 6; index++) {
+            const randomNum = Math.floor(Math.random() * 16)
+            color = color + myArray[randomNum]
+        }
+        return color
+    }
+
+
+
+
+    document.getElementById('Start').addEventListener('click', () => {
+
+        const result = setInterval(() => {
+            document.body.style.background = generateColor()
+            color = "#"
+        }, 1000);
+
+
+        document.querySelector('#Stop').addEventListener('click',()=> {
+            clearInterval(result)
+        })
+    })
+
+
+</script>
+
+</html>
