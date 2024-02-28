@@ -30,3 +30,4 @@ printME("satvick")                                 // satvick
 console.log(printME.score)                         // 2
 console.log(printME.prototype);                    // {} empty object - you know why
 
+// thus it proves that function also behaves like an object. now here the empty object is this of the current method printME
