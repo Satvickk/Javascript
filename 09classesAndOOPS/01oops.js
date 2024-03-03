@@ -62,10 +62,13 @@ console.log(empOne.constructor)               // can also be written as empOne.p
 
 //IMP - a constructor function of an object always holds the reference to the original object ! , in this case it holds the reference of a function employee i.e [Function: employee]
 
-// on using constructor method
-// step 1 : an empty object/context will be created
-// Step 2 : all the properties and methods will be inserted
-// Step 3 : the value of the this context will be assigned to this
+
+
+// on using constructor method(when we invoked constructor function using new keyword)
+// step 1 : an empty object/instance is created - {}
+// step 2 : the constructor function is called/loaded and all the attributes and methods are created/copied from the original object/class
+// Step 3 : all the properties and methods will be inserted into the empty instance
+// Step 4 : the instance is then saved in the memory
 
 
 // instanceOf is used to check weather the object is instance of the object or not

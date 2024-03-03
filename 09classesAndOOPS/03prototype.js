@@ -2,11 +2,11 @@ const username = "satvick"
 const myArray = [1,2,3,4,5,6]
 const myObject = { car : "maruti"}
 
-// in Object we saw that we can define a function/method for a specific function in prototype and can use it fo every instace of that function
+// in Object we saw that we can define a function/method for a specific function/object in prototype and can use it for every instace of that function
 
-// similarily we can define a function/method for any data structure in prototype and it will be present for that data type
+// since we know that every data structure is an Object we can define a function/method for any data structure in prototype and it will be present for that data type
 
-// example
+// example - if we define a prototype function for Object we will have that function for every other data structure may it be string/array/object or function
 
 Object.prototype.print = function (val) {
     console.log("this is print function");
@@ -37,28 +37,35 @@ String.prototype.trueLength = function() {
 
 // inheritance
 
-const User = {
-    name: "satvick",
-    email: "satvick@google.com"
+const friend = {
+    friendname : "Ravi",
+    age: "20"
 }
 
-const Teacher = {
-    makeVideo: true
+const brother = {
+    brothername : "Pratyush",
+    age: "21"
 }
 
-const TeachingSupport = {
-    isAvailable: false
+const user = {
+    username: "Satvick",
+    age: "21",
+    __proto__ : brother       // this is how we can share the variables and methods of another object to this one
 }
 
-const TASupport = {
-    makeAssignment: 'JS assignment',
-    fullTime: true,
-    __proto__: TeachingSupport
-}
+// Remember only user will have the access to the properties of brother but brother will not have the access of the properties of user( it works only one way)
 
-Teacher.__proto__ = User
 
-// modern syntax of Inheritance
+// brother.__proto__ = friend;                            
 
-Object.setPrototypeOf(TeachingSupport, Teacher)
-Object.setPrototypeOf(TASupport, Teacher)
+// console.log(user.friendname)                           //   Ravi
+console.log(user)                                      //  { username: 'Satvick', age: '21' }
+
+// console.log(brother.username)                          // undefined
+
+
+// modern syntax
+
+Object.setPrototypeOf(brother, friend)
+
+console.log(user.friendname)                           //   Ravi
