@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button id="btn">Click here</button>
+</body>
+
+<script>
+    class React {
+        constructor(){
+            this.library = "React";
+            this.server = "https://localhost:3000"
+
+        //requirment
+            // document.querySelector("#btn").addEventListener('click', this.handleClick)
+            document.querySelector("#btn").addEventListener('click', this.handleClick.bind(this))
+
+        }
+
+
+        handleClick(){
+            console.log(`Your site is live at ${this.server}`);  // here we will not have the access for the server because the handleClick function will not have the access to this when clicked thus we have to bind the 'this' with the event handler function
+            console.log("Clicked")
+        }
+}
+
+
+const app = new React;
+</script>
+</html>
