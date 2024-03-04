@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure and Lexical Scope mini Project</title>
+</head>
+<body style="height: 100vh; width: 100%; background-color: #212122;">
+    <button id="orange">Orange</button>
+    <button id="blue">blue</button>
+</body>
+<script>
+
+    function handleClick(color){
+        return function(){
+            document.body.style.backgroundColor = color;
+        }
+}
+
+document.getElementById("orange").onclick = handleClick("orange")
+document.getElementById("blue").onclick = handleClick("blue")
+
+</script>
+</html>
